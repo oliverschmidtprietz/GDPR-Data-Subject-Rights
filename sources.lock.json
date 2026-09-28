@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-24",
+  "files": {
+    "references/procedural-framework.md": {
+      "source_type": "ai-drafted",
+      "jurisdiction": "EU",
+      "url": null,
+      "last_verified": "2026-07-07",
+      "confidence": "high",
+      "owner": "oliverschmidtprietz",
+      "notes": "Art. 12 modalities (receipt/deadlines/identity/fees). Verified against EDPB Guidelines 01/2022 v2.1 and Reg. 1182/71 in the 2026-07-07 legal verification pass (sources/verification-log.md, Cluster 2). No dated re-check newer than v1.0 for this method content — the v1.1 (2026-07-21) change was documentation-only (Digital Omnibus instrument-ID split), not a re-verification of this file."
+    },
+    "references/art15-access.md": {
+      "source_type": "ai-drafted",
+      "jurisdiction": "EU",
+      "url": null,
+      "last_verified": "2026-07-07",
+      "confidence": "high",
+      "owner": "oliverschmidtprietz",
+      "notes": "Access deep track. Verified against 14 CJEU cases (sources/verification-log.md, Cluster 1) and EDPB Guidelines 01/2022 v2.1 (Cluster 2) in the 2026-07-07 pass. No dated re-check newer than v1.0."
+    },
+    "references/art17-erasure.md": {
+      "source_type": "ai-drafted",
+      "jurisdiction": "EU",
+      "url": null,
+      "last_verified": "2026-07-07",
+      "confidence": "high",
+      "owner": "oliverschmidtprietz",
+      "notes": "Erasure deep track (grounds, exceptions, backups, Art. 17(2)/19 downstream). Verified against CJEU C-129/21, C-26/22, C-64/22 etc. in the 2026-07-07 pass (sources/verification-log.md, Cluster 1). No dated re-check newer than v1.0."
+    },
+    "references/other-rights.md": {
+      "source_type": "ai-drafted",
+      "jurisdiction": "EU",
+      "url": null,
+      "last_verified": "2026-07-07",
+      "confidence": "high",
+      "owner": "oliverschmidtprietz",
+      "notes": "Art. 16/18/20/21/22 compact track, incl. CJEU C-634/21 SCHUFA. Verified in the 2026-07-07 pass (sources/verification-log.md, Cluster 1). No dated re-check newer than v1.0."
+    },
+    "references/restrictions-overlays.md": {
+      "source_type": "ai-drafted",
+      "jurisdiction": "DE",
+      "url": null,
+      "last_verified": "2026-07-07",
+      "confidence": "high",
+      "owner": "oliverschmidtprietz",
+      "notes": "Art. 23 + BDSG §§ 34/35/26 carve-outs, German retention anchors. Self-dated in-file: \"Verified against current statute text 2026-07-07\" (restrictions-overlays.md:30), matching sources/verification-log.md Cluster 3."
+    },
+    "references/templates.md": {
+      "source_type": "template",
+      "jurisdiction": "EU",
+      "url": null,
+      "last_verified": "2026-07-07",
+      "confidence": "high",
+      "owner": "oliverschmidtprietz",
+      "notes": "Bilingual EN/DE letter skeletons, DSR register schema, deadline computation block. Covered by the same 2026-07-07 pass as the deep-track files it draws on."
+    },
+    "sources/verification-log.md": {
+      "source_type": "verification-log",
+      "jurisdiction": "EU",
+      "url": null,
+      "last_verified": "2026-07-21",
+      "confidence": "high",
+      "owner": "oliverschmidtprietz",
+      "notes": "The skill's own verification record, not a references/ file (outside SRC-1's on-disk scan) — listed here for completeness. Most recent entry is the 2026-07-21 portfolio-wide Digital Omnibus instrument-ID closure (COM(2025) 837, not 833). Do NOT read 2026-07-21 as a re-verification of the Art. 15/17 method content itself — that is still 2026-07-07 (v1.0), per the six-skill adoption brief's explicit warning against borrowing a fresher sibling's date."
+    }
+  }
+}

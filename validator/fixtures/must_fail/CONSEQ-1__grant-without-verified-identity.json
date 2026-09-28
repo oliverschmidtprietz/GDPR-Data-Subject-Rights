@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "data-subject-rights skill v<X.Y>",
+  "generated_at": "2026-09-24T09:00:00Z",
+  "request": {
+    "id": "dsr-2026-0092",
+    "intake_date": "2026-09-01",
+    "channel": "privacy@example.com",
+    "requester_relationship": "unknown third party",
+    "text": "Please erase all data you hold on this person."
+  },
+  "rights_invoked": ["art17"],
+  "identity_verification": {
+    "verified": false,
+    "reasonable_doubts": true,
+    "notes": "Requester could not confirm the account email or any order history; no existing authentication channel matched."
+  },
+  "decision": "grant",
+  "deadline": {
+    "computed_date": "2026-10-01",
+    "extended": false
+  },
+  "downstream_duties": []
+}

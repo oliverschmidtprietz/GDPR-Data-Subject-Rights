@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/oliverschmidtprietz/claude-skills/skills/data-subject-rights/references/dsr-sidecar-schema.json",
+  "title": "data-subject-rights native sidecar 1.0",
+  "description": "The machine-readable triage record behind a DSR triage verdict: which right(s) were invoked, the computed deadline, the identity-verification stance, the decision, and any downstream duties. Mirrors the skill's own human deliverable (SKILL.md 'Output Formats') — no field here is invented beyond what the skill already produces.",
+  "type": "object",
+  "required": [
+    "schema_version", "generated_by", "generated_at", "request",
+    "rights_invoked", "identity_verification", "decision", "deadline",
+    "downstream_duties"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "generated_by": {"type": "string"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "request": {
+      "type": "object",
+      "required": ["id", "intake_date", "channel"],
+      "properties": {
+        "id": {"type": "string"},
+        "intake_date": {"type": "string", "format": "date"},
+        "channel": {"type": "string"},
+        "requester_relationship": {"type": "string"},
+        "text": {
+          "type": "string",
+          "description": "Free text of the incoming request, when captured — used only by RIGHTS-1's read-generously heuristic."
+        }
+      }
+    },
+    "rights_invoked": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"enum": ["art15", "art16", "art17", "art18", "art20", "art21", "art22"]}
+    },
+    "identity_verification": {
+      "type": "object",
+      "required": ["verified", "reasonable_doubts"],
+      "properties": {
+        "verified": {"type": "boolean"},
+        "reasonable_doubts": {
+          "type": "boolean",
+          "description": "Assessment Flow: identity check only runs if reasonable doubts exist (Art. 12(6))."
+        },
+        "notes": {"type": "string"}
+      }
+    },
+    "decision": {"enum": ["grant", "partial", "refuse", "extend"]},
+    "deadline": {
+      "type": "object",
+      "required": ["computed_date", "extended"],
+      "properties": {
+        "computed_date": {"type": "string", "format": "date"},
+        "extended": {
+          "type": "boolean",
+          "description": "True if the Art. 12(3) +2-month extension was declared within the first month."
+        }
+      }
+    },
+    "downstream_duties": {
+      "type": "array",
+      "description": "Duties beyond the response itself. Four values double as the sibling-handoff surface (SKILL.md 'Sibling Skill Handoffs'); the other two are plain gaps when not yet discharged.",
+      "items": {
+        "type": "object",
+        "required": ["duty", "discharged"],
+        "properties": {
+          "duty": {
+            "enum": [
+              "art19_third_party_notification",
+              "art17_2_public_disclosure_notice",
+              "locate_personal_data_ropa",
+              "objection_rebalancing_legitimate_interest",
+              "processor_assistance_dpa28",
+              "notice_accuracy_privacy_notice"
+            ]
+          },
+          "discharged": {"type": "boolean"}
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "description": "Populated at run time by validate.py's --emit-core-artefact path from the LIVE validation result; a sidecar authored by hand normally omits this.",
+      "properties": {
+        "status": {"enum": ["passed", "passed_with_warnings", "failed"]},
+        "findings": {"type": "array"}
+      }
+    }
+  }
+}

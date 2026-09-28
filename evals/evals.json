@@ -1,0 +1,111 @@
+{
+  "skill_name": "data-subject-rights",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're a German e-commerce company (controller, ~500k customers). A customer emailed our support inbox on 3 July asking 'please send me all data you have about me and tell me exactly who you gave it to — I want the names of the companies, not just categories'. Support forwarded it to me (privacy team) today, 7 July. Do we have to name the actual recipients? And when is this due? Also, can we ask for a copy of her ID card first, just to be safe?",
+      "expected_output": "Deadline runs from receipt on 3 July (support inbox counts) → due 3 August (adjusted for weekend/holiday if applicable), not from when the privacy team got it. Actual recipients must be NAMED on request per CJEU C-154/21 Österreichische Post — categories only if identification impossible or request manifestly unfounded/excessive. ID-card copy by default is disproportionate (Art. 12(6): reasonable doubts standard) — verify via the existing customer-account channel. Response must include the full Art. 15(1)(a)-(h) block plus a free first copy.",
+      "files": [],
+      "expectations": [
+        "States the one-month deadline runs from receipt of the email on 3 July, not from internal forwarding to the privacy team",
+        "Computes and states a concrete due date (3 August or the following working day)",
+        "States actual recipients must be named, citing CJEU C-154/21 (Österreichische Post) or its holding",
+        "States categories of recipients suffice only where identification is impossible or the request is manifestly unfounded/excessive",
+        "Rejects the default ID-card-copy demand as disproportionate under Art. 12(6) / EDPB Guidelines 01/2022",
+        "Recommends verification via the existing account/email channel instead",
+        "Mentions the response must cover the Art. 15(1) meta-information (purposes, categories, retention, source, rights), not only the data copy",
+        "States the first copy is free (Art. 15(3) / Art. 12(5))"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Ein ehemaliger Kunde verlangt die vollständige Löschung aller seiner Daten ('Recht auf Vergessenwerden'). Er hat vor 8 Monaten zuletzt bei uns gekauft, es gibt noch Rechnungen. Wir sind ein deutsches Handelsunternehmen. Müssen wir wirklich alles löschen? Was ist mit unseren Backups?",
+      "expected_output": "Zweistufige Prüfung: Art. 17(1)-Grund für nicht mehr erforderliche Marketing-/Profildaten und Art. 17(3)(b)-Ausnahme für die rechnungsrelevanten Unterlagen. Rechnungsdaten werden nur für die gesetzliche Aufbewahrung, technisch getrennt und zugriffsbeschränkt weiterverarbeitet und nach Fristablauf gelöscht. Das ist nicht automatisch eine Einschränkung nach Art. 18; § 35(3) BDSG gilt nicht für gesetzliche Aufbewahrungsfristen. Empfänger der tatsächlich gelöschten Daten werden nach Art. 19 benachrichtigt. Backups werden dokumentiert gestaffelt gelöscht und transparent erklärt.",
+      "files": [],
+      "expectations": [
+        "Runs the two-step test: Art. 17(1) ground first, then Art. 17(3) exceptions",
+        "Identifies Art. 17(3)(b) statutory retention as defeating erasure only for invoice-relevant records",
+        "Recommends partial erasure now for data not covered by retention",
+        "Does not claim statutory retention automatically creates an Art. 18 restriction or falls under § 35(3) BDSG",
+        "Requires purpose limitation, access controls or technical separation for retained records, plus deletion at expiry",
+        "Addresses staged backup deletion and transparent communication",
+        "Applies Art. 19 notification to recipients of data actually erased, rectified, or formally restricted",
+        "Responds in German"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "An ex-employee who is suing us for unfair dismissal has sent a subject access request. Our external counsel says we can refuse because he's obviously only doing it to fish for evidence for the lawsuit, and it's a huge effort — his data is spread over email, HR systems and project tools. Can we refuse, or at least charge him for the work?",
+      "expected_output": "No refusal: motive is irrelevant per CJEU C-307/22 (FT) — a genuine litigation purpose does not make a request abusive (distinct from CJEU C-526/24 Brillen Rottler: refusal is possible only where the controller demonstrates the request was made to manufacture an Art. 82 damages claim, which a real employment dispute is not). Broad scope is not 'excessive'; Art. 12(5) is a high bar with the burden on the controller, and the first copy is free. Correct handling: use the EDPB specify-mechanism to offer scoping (but comply fully if he declines), search all systems, redact third-party data (colleagues, witnesses) under Art. 15(4) rather than refusing, check § 34 BDSG only for narrow retention-only records, and watch the deadline (Art. 82 damages exposure in Germany).",
+      "files": [],
+      "expectations": [
+        "States the request cannot be refused because of its litigation motive, citing CJEU C-307/22 or the motive-irrelevance principle",
+        "States effort/breadth alone does not make a request manifestly excessive, and the burden of demonstrating Art. 12(5) lies on the controller",
+        "States the first copy must be free",
+        "Recommends the EDPB specify-mechanism (asking the requester to narrow scope) while noting full compliance is owed if he declines",
+        "Recommends redaction of third-party data (colleagues, witnesses, whistleblowers) under Art. 15(4) instead of refusal",
+        "Pushes back on the external counsel's advice rather than deferring to it",
+        "Mentions deadline discipline and/or Art. 82 damages exposure for late or incomplete responses"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Two objections came in this week. (1) A prospect says 'stop sending me your newsletter and any marketing, full stop'. (2) A customer objects to us analysing his purchase history for our fraud-prevention scoring, which we run on legitimate interests. Do we have to stop both? Our marketing team wants to keep the prospect's email 'so we know not to contact him again' — is that allowed?",
+      "expected_output": "Objection (1) is Art. 21(2)-(3) direct marketing: absolute, immediate stop, no balancing, no reasons needed from the data subject. Keeping minimal contact data on a suppression list IS correct and lawful (otherwise he gets re-contacted) — document the basis. Objection (2) is Art. 21(1): processing pauses/balancing runs; the CONTROLLER must show compelling legitimate grounds overriding him — a reversed, stricter burden than the original Art. 6(1)(f) balance; fraud prevention is a strong candidate but must be demonstrated, ideally via a re-run LIA (legitimate-interest skill). If the balancing fails, Art. 17(1)(c) erasure follows.",
+      "files": [],
+      "expectations": [
+        "Distinguishes the two objection regimes: Art. 21(2)-(3) marketing vs Art. 21(1) general objection",
+        "States the marketing objection is absolute — no balancing, no justification required, effective immediately",
+        "Approves the suppression list: retaining minimal contact data to honour the objection is lawful and correct, with documented basis",
+        "States that for the Art. 21(1) objection the controller bears the burden of demonstrating COMPELLING legitimate grounds (stricter than the original LIA balance)",
+        "Notes fraud prevention is a plausible compelling ground but must be demonstrated, not asserted",
+        "References re-running the balancing / the legitimate-interest skill for objection (2)",
+        "States that failed balancing leads to erasure under Art. 17(1)(c)"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "A user of our SaaS platform wants 'his data exported to take to a competitor — including the risk scores we calculated about his account'. Our processing runs on contract (the account data) and legitimate interests (the scoring). What exactly do we owe him under data portability, and in what format? A PDF export would be easiest for us.",
+      "expected_output": "Art. 20 covers data he PROVIDED: declared account data and observed usage data (WP242 rev.01) processed on the contract basis — NOT the derived/inferred risk scores (excluded as derived data; also on an LI basis, which Art. 20 doesn't cover). The scores are reachable via Art. 15 access instead (including meaningful logic if Art. 22-relevant). Format: structured, commonly used, machine-readable (CSV/JSON/XML) — a PDF fails. Direct transmission to the competitor only where technically feasible; no duty to build compatibility. Portability does not itself erase anything at the source.",
+      "files": [],
+      "expectations": [
+        "Includes provided AND observed data (usage/behavioural data) in the portable set, per WP242",
+        "Excludes the derived/inferred risk scores from portability",
+        "Notes the legal-basis condition: portability applies only to consent- or contract-based processing (the LI-based scoring fails this too)",
+        "Points to Art. 15 access as the route to the scores instead",
+        "Rejects PDF; requires a structured, commonly used, machine-readable format (CSV/JSON/XML or equivalent)",
+        "States direct controller-to-controller transmission applies only where technically feasible",
+        "Clarifies portability does not trigger erasure of the source data"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Our lending platform auto-rejects loan applications below a score threshold from an external credit bureau. A rejected applicant demands 'human review and an explanation of the algorithm'. Our position: our staff formally approve every rejection batch, so it's not automated decision-making, and the algorithm is the bureau's trade secret anyway. Are we safe?",
+      "expected_output": "Not safe. Batch rubber-stamping is not meaningful human involvement — the decision stays within Art. 22 (authority + actual engagement required). Per CJEU C-634/21 (SCHUFA), even the bureau's scoring can itself be an Art. 22 decision where the lender draws strongly on it — both parties have exposure. The applicant's demands map to Art. 22(3) safeguards (human intervention, express views, contest) and Art. 15(1)(h) meaningful information: the procedure and principles actually applied must be explained intelligibly, while C-203/22 does not categorically require disclosure of model factors, weights, formulas, or source code. Trade secrets limit the DEPTH of the explanation, not its existence. Check the Art. 22(2) exception basis (contract necessity) and document it.",
+      "files": [],
+      "expectations": [
+        "Rejects the batch-approval argument: rubber-stamping is not meaningful human involvement, so Art. 22 applies",
+        "Cites CJEU C-634/21 (SCHUFA) or its holding that scoring itself can constitute the automated decision",
+        "Identifies the Art. 22(3) safeguards owed: human intervention, right to express views, right to contest",
+        "States meaningful information about the logic is owed under Art. 15(1)(h): an intelligible explanation of how the decision/score was reached (procedure and principles, not the raw algorithm or formula)",
+        "States trade secrets limit the depth of the explanation but cannot eliminate the explanation duty",
+        "Addresses which Art. 22(2) exception could legitimise the processing (contract necessity) and that it must be documented",
+        "Does not conclude the controller is 'safe' as asked",
+        "Does not claim that C-203/22 categorically requires disclosure of model factors, weights, formulas, or source code"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "We clearly publish privacy@example.com and our normal customer-support inbox for privacy requests. A former customer instead sent 'give me all my data' to the private email address of a warehouse employee she found on an old sports-club page; that address is not used or advertised by the company, and the employee only noticed it three weeks later. Did the GDPR one-month clock start when that private email arrived? Would the answer differ if she had used our general support inbox instead of privacy@example.com?",
+      "expected_output": "Distinguish the channels. The controller need not treat a request sent to a completely random, apparently incorrect, or clearly unrelated private address as received through an official channel where appropriate channels were clearly communicated. The general support inbox is an official controller channel, so a request there is effective on receipt and internal forwarding does not move the deadline. Do not state that every message to any employee or social-media account automatically starts the clock.",
+      "files": [],
+      "expectations": [
+        "States that the unrelated private warehouse-employee address is not automatically an effective controller receipt channel",
+        "Relies on the random/apparently incorrect address qualification from EDPB Guidelines 01/2022",
+        "States that the official general support inbox is effective even though it is not the preferred privacy inbox",
+        "States that internal routing delay from an official channel does not reset or extend the deadline",
+        "Avoids the categorical rule that every channel or every employee inbox starts the clock"
+      ]
+    }
+  ]
+}

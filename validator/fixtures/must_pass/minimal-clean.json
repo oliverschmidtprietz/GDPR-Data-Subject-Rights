@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "data-subject-rights skill v<X.Y>",
+  "generated_at": "2026-09-24T09:00:00Z",
+  "request": {
+    "id": "dsr-2026-0091",
+    "intake_date": "2026-09-01",
+    "channel": "privacy@example.com",
+    "requester_relationship": "customer",
+    "text": "Please send me a copy of the personal data you hold about me."
+  },
+  "rights_invoked": [
+    "art15"
+  ],
+  "identity_verification": {
+    "verified": true,
+    "reasonable_doubts": false
+  },
+  "decision": "grant",
+  "deadline": {
+    "computed_date": "2026-10-01",
+    "extended": false
+  },
+  "downstream_duties": []
+}
