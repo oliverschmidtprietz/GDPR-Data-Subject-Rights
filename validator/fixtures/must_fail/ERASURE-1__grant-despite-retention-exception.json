@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.1",
+  "generated_by": "data-subject-rights skill v<X.Y>",
+  "generated_at": "2026-09-24T09:00:00Z",
+  "request": {
+    "id": "dsr-2026-0212",
+    "intake_date": "2026-09-01",
+    "channel": "privacy@example.com",
+    "requester_relationship": "customer",
+    "text": "Please delete all my data, including my invoices from last year."
+  },
+  "rights_invoked": ["art17"],
+  "identity_verification": {"verified": true, "reasonable_doubts": false},
+  "decision": "grant",
+  "deadline": {"computed_date": "2026-10-01", "extended": false},
+  "erasure_decision": {"ground_examined": "a", "exception_relied_on": "b"},
+  "downstream_duties": []
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.1",
+  "generated_by": "data-subject-rights skill v<X.Y>",
+  "generated_at": "2026-09-24T09:00:00Z",
+  "request": {
+    "id": "dsr-2026-0224",
+    "intake_date": "2026-09-01",
+    "channel": "privacy@example.com",
+    "requester_relationship": "customer",
+    "text": "Please delete all my data."
+  },
+  "rights_invoked": ["art17"],
+  "identity_verification": {"verified": true, "reasonable_doubts": false},
+  "decision": "refuse",
+  "deadline": {"computed_date": "2026-10-01", "extended": false},
+  "erasure_decision": {"ground_examined": "none_found"},
+  "downstream_duties": []
+}

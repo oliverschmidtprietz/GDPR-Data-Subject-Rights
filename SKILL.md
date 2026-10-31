@@ -5,7 +5,7 @@ description: |
 metadata:
   author: Oliver Schmidt-Prietz
   license: AGPL-3.0
-  version: 1.2
+  version: 1.3
 ---
 
 # Data Subject Rights (GDPR Art. 12–23)
@@ -13,6 +13,14 @@ metadata:
 ## Disclaimer (show at session start, do not block)
 
 > **Important:** This skill provides structured guidance on handling GDPR data subject requests based on the Regulation, EDPB Guidelines 01/2022 (right of access), and CJEU case law. It is not legal advice. Involve your DPO and qualified counsel for contested or high-risk requests.
+
+## Scope — jurisdiction
+
+This skill covers **EU GDPR** (plus German BDSG overlays, `references/restrictions-overlays.md`). A request citing UK law — "SAR"/"DSAR" under **UK GDPR**, the Data Protection Act 2018 — is **outside this playbook**: (1) CJEU rulings handed down after 31 Dec 2020 (the end of the Brexit transition period) are not binding on UK courts/the ICO, so the post-2021 CJEU case law point 3, 14 and others above do not transfer automatically; (2) the **Data (Use and Access) Act 2025** changed UK subject-access handling — a statutory "stop the clock" mechanism while the controller seeks clarification, and a "reasonable and proportionate search" standard — with the main data-protection provisions in force from 5 February 2026 (verify current commencement/wording on legislation.gov.uk before relying on specifics; this skill does not track UK law). Flag a UK-law request and recommend UK-qualified counsel rather than applying the EU analysis above.
+
+## Identity — competing claims and abuse
+
+A request about someone else's data wearing the data subject's name (ex-partner, joint-account co-holder, estranged family member) is a **disclosure risk, not a routine identity check**: verify identity against the actual account holder, not against whoever is asking, and never disclose one joint-account holder's personal data to another without an independent basis (consent, or data genuinely both parties' own). Treat a request that supplies only guessed/public information (an email address, a name) as unverified — see Legal Precision Point 7 and CONSEQ-1 below. DSR abuse (harassment campaigns, serial request-and-sue patterns) is a real but narrow limit — Legal Precision Points 3 and 8 — never a reason to add friction to ordinary requests.
 
 ## Routing
 
@@ -25,8 +33,9 @@ Determine what the user needs and load references accordingly:
 | Erasure request (Art. 17) | `procedural-framework.md` + `references/art17-erasure.md` | Test grounds, then exceptions, then downstream duties (Art. 17(2), 19) |
 | Rectification / restriction / portability / objection / Art. 22 | `procedural-framework.md` + `references/other-rights.md` | Assess the specific right |
 | Refusing, charging, or extending | `procedural-framework.md` (Art. 12(5) section) | Draft reasoned refusal/extension with the high-bar tests |
-| National law restrictions (esp. Germany) | `references/restrictions-overlays.md` | Check Art. 23 + BDSG §§ 34/35 carve-outs |
+| National law restrictions (esp. Germany) | `references/restrictions-overlays.md` | Check Art. 23 + BDSG §§ 32/33/34/35/36/37 carve-outs |
 | Response letters, DSR register, deadline math | `references/templates.md` (+ docx skill for .docx output) | Draft the deliverable |
+| Checking the Digital Omnibus reform status | `references/pending-legislation.md` | Confirm it is still a proposal before citing it |
 
 **Intake questions (only those not already answered):** (1) Which right(s) does the request invoke — read it generously, a "delete everything and tell me what you have" email is BOTH Art. 17 and Art. 15. (2) When and through which channel was it received? (3) Requester's relationship (customer, employee, third party/agent)? (4) Any identity doubts — concrete, not hypothetical? (5) Controller's jurisdiction and sector (retention laws)?
 
@@ -72,14 +81,7 @@ These are areas where training knowledge is commonly imprecise. Always apply the
 
 ## Pending Legislation — Digital Omnibus (NOT law)
 
-The Commission's Digital Omnibus proposal (COM(2025) 837 final, 19 Nov 2025, procedure 2025/0360(COD)) would amend the GDPR. Status at last verification (2026-07-07, `sources/verification-log.md`): EP committee stage, no Council general approach, adoption unlikely before 2027. **Apply current law; flag the proposal in one sentence where relevant; never blend proposed text into the analysis.** DSR-relevant items in the tabled text:
-
-- **Art. 12(5) replaced**: new ground to refuse/charge for **Art. 15 requests** abused "for purposes other than the protection of their data", plus a lowered proof bar for "excessive" — would partly reverse C-307/22 motive-irrelevance. The Council compromise keeps only a tightened version requiring *demonstrated abusive intention* (close to the C-526/24 case law).
-- **Art. 22 rewritten** as a permission rule with a broadened contract exception (Council compromise deletes this).
-- **Relative "personal data" definition** (Art. 4(1)) + pseudonymisation implementing acts (new Art. 41a) — would gate all DSRs off for entities that cannot identify the person (Council compromise deletes this).
-- **New Arts. 88a-88c**: machine-readable consent-refusal and Art. 21(2) objection signals controllers must honour; unconditional objection to AI-training processing (Council compromise deletes these).
-
-Untouched by the tabled text: deadlines and modalities (Art. 12(1)-(4), (6)-(8)), Arts. 14-21 as written, Art. 23. Re-check procedure 2025/0360(COD) before major deliverables.
+The Commission's Digital Omnibus proposal (procedure 2025/0360(COD)) would amend the GDPR, including Art. 12(5) and Art. 22. **Apply current law; flag the proposal in one sentence where relevant; never blend proposed text into the analysis.** Status, DSR-relevant items, and what's untouched: `references/pending-legislation.md` (covered by `sources.lock.json`, so SRC-1 freshness applies to it like every other reference file).
 
 ## Sibling Skill Handoffs
 
@@ -112,6 +114,10 @@ projection (`skill-artefact-1.1` shape) for handoff to another skill or tool.
 This is a **structural**-tier validator (schema conformance + a handful of
 consequential-input rules — see `conformance.json`), not a full legal rule
 engine; it does not replace the judgement calls in the Assessment Flow above.
+**A validator pass means the sidecar is internally consistent and complete
+against its own schema and the rules above — it is not a statement that the
+underlying legal analysis (which right applies, whether a ground or
+exception is correctly identified) is correct.**
 
 ## Changelog
 

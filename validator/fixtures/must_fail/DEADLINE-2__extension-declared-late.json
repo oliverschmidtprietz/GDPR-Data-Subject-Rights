@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.1",
+  "generated_by": "data-subject-rights skill v<X.Y>",
+  "generated_at": "2026-11-05T09:00:00Z",
+  "request": {
+    "id": "dsr-2026-0210",
+    "intake_date": "2026-08-01",
+    "channel": "privacy@example.com",
+    "requester_relationship": "customer",
+    "text": "Please send me a copy of all the personal data you hold about me, it is a complex multi-system request."
+  },
+  "rights_invoked": ["art15"],
+  "identity_verification": {"verified": true, "reasonable_doubts": false},
+  "decision": "extend",
+  "deadline": {
+    "computed_date": "2026-10-30",
+    "extended": true,
+    "extension_declared_at": "2026-09-15"
+  },
+  "downstream_duties": []
+}

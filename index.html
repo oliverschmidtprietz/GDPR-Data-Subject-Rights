@@ -811,8 +811,8 @@ body {
 
     <section class="hero">
         <div class="badges">
-            <div class="badge badge--live">LIVE · v1.2 STABLE</div>
-            <div class="badge">BUILD 2026.09.24</div>
+            <div class="badge badge--live">LIVE · v1.3 STABLE</div>
+            <div class="badge">BUILD 2026.10.02</div>
             <div class="badge badge--color">ART. 12–23</div>
             <div class="badge">AGPL-3.0 · 7 EVAL CASES · 50 ASSERTIONS</div>
         </div>
@@ -824,7 +824,7 @@ body {
 
     <div class="marquee-wrap">
         <div class="marquee-track">
-            <span class="marquee-text">GDPR ART. 12–23 &nbsp; · &nbsp; GDPR ART. 15 &nbsp; · &nbsp; GDPR ART. 17 &nbsp; · &nbsp; EDPB GUIDELINES 01/2022 &nbsp; · &nbsp; C-154/21 ÖSTERREICHISCHE POST &nbsp; · &nbsp; C-307/22 FT &nbsp; · &nbsp; C-487/21 &nbsp; · &nbsp; C-634/21 SCHUFA &nbsp; · &nbsp; C-526/24 BRILLEN ROTTLER &nbsp; · &nbsp; BDSG §§ 34/35 &nbsp; · &nbsp; WP242 REV.01 &nbsp; · &nbsp; COM(2025) 837 &nbsp; · &nbsp; GDPR ART. 12–23 &nbsp; · &nbsp; GDPR ART. 15 &nbsp; · &nbsp; GDPR ART. 17 &nbsp; · &nbsp; EDPB GUIDELINES 01/2022 &nbsp; · &nbsp; C-154/21 ÖSTERREICHISCHE POST &nbsp; · &nbsp; C-307/22 FT &nbsp; · &nbsp; C-487/21 &nbsp; · &nbsp; C-634/21 SCHUFA &nbsp; · &nbsp; C-526/24 BRILLEN ROTTLER &nbsp; · &nbsp; BDSG §§ 34/35 &nbsp; · &nbsp; WP242 REV.01 &nbsp; · &nbsp; COM(2025) 837</span>
+            <span class="marquee-text">GDPR ART. 12–23 &nbsp; · &nbsp; GDPR ART. 15 &nbsp; · &nbsp; GDPR ART. 17 &nbsp; · &nbsp; EDPB GUIDELINES 01/2022 &nbsp; · &nbsp; C-154/21 ÖSTERREICHISCHE POST &nbsp; · &nbsp; C-307/22 FT &nbsp; · &nbsp; C-487/21 &nbsp; · &nbsp; C-634/21 SCHUFA &nbsp; · &nbsp; C-526/24 BRILLEN ROTTLER &nbsp; · &nbsp; BDSG §§ 32-37 &nbsp; · &nbsp; WP242 REV.01 &nbsp; · &nbsp; COM(2025) 837 &nbsp; · &nbsp; GDPR ART. 12–23 &nbsp; · &nbsp; GDPR ART. 15 &nbsp; · &nbsp; GDPR ART. 17 &nbsp; · &nbsp; EDPB GUIDELINES 01/2022 &nbsp; · &nbsp; C-154/21 ÖSTERREICHISCHE POST &nbsp; · &nbsp; C-307/22 FT &nbsp; · &nbsp; C-487/21 &nbsp; · &nbsp; C-634/21 SCHUFA &nbsp; · &nbsp; C-526/24 BRILLEN ROTTLER &nbsp; · &nbsp; BDSG §§ 32-37 &nbsp; · &nbsp; WP242 REV.01 &nbsp; · &nbsp; COM(2025) 837</span>
         </div>
     </div>
 
@@ -866,7 +866,7 @@ body {
         <div class="feature-card" style="background-color: #B0E0D4;">
             <div class="feature-number">06</div>
             <div class="feature-name">OMNIBUS WATCH</div>
-            <div class="feature-desc">Digital Omnibus (COM(2025) 837, procedure 2025/0360(COD)) tracked with a current-law-first rule: apply the GDPR as it stands, flag the proposal in one sentence, never blend proposed text into the analysis.</div>
+            <div class="feature-desc">Digital Omnibus (COM(2025) 837, procedure 2025/0360(COD) — still in EP committee, no Council general approach) tracked with a current-law-first rule: apply the GDPR as it stands, flag the proposal in one sentence, never blend proposed text into the analysis.</div>
         </div>
     </div>
 
@@ -912,7 +912,7 @@ body {
             <div class="workflow-step-num">05</div>
             <div class="workflow-step-body">
                 <div class="workflow-step-title">Exceptions &amp; restrictions</div>
-                <div class="workflow-step-desc">Art. 12(5) high-bar tests; rights of others as targeted redaction, never blanket denial (Art. 15(4)); Art. 23 national restrictions with BDSG §§ 34/35 carve-outs.</div>
+                <div class="workflow-step-desc">Art. 12(5) high-bar tests; rights of others as targeted redaction, never blanket denial (Art. 15(4)); Art. 23 national restrictions with BDSG §§ 32/33/34/35/36/37 carve-outs.</div>
             </div>
         </div>
         <div class="workflow-step">
@@ -958,6 +958,7 @@ body {
 │   ├── art17-erasure.md
 │   ├── dsr-sidecar-schema.json
 │   ├── other-rights.md
+│   ├── pending-legislation.md
 │   ├── procedural-framework.md
 │   ├── restrictions-overlays.md
 │   └── templates.md
@@ -976,6 +977,7 @@ body {
 │   ├── fixtures
 │   │   ├── must_fail
 │   │   └── must_pass
+│   ├── test_validate_cli.py
 │   └── validate.py
 ├── CHANGELOG.md  <span class="comment"># Version history</span>
 ├── README.md  <span class="comment"># Deployment guide</span>
@@ -1127,8 +1129,8 @@ body {
                 <div class="reg-ref">Data portability — provided and observed data in, derived data out.</div>
             </div>
             <div class="reg-row">
-                <div class="reg-doc">BDSG §§ 34/35 · AO § 147 · HGB § 257</div>
-                <div class="reg-ref">German information/erasure carve-outs and post-BEG-IV retention anchors.</div>
+                <div class="reg-doc">BDSG §§ 32/33/34/35/36/37 · AO § 147 · HGB § 257</div>
+                <div class="reg-ref">German information/erasure/objection/Art.22 carve-outs and post-BEG-IV retention anchors.</div>
             </div>
             <div class="reg-row">
                 <div class="reg-doc">Digital Omnibus COM(2025) 837</div>
@@ -1207,7 +1209,8 @@ body {
 │   ├── art15-access.md               # Access deep track (EDPB 01/2022 + CJEU)
 │   ├── art17-erasure.md              # Erasure deep track (grounds, exceptions, downstream)
 │   ├── other-rights.md               # Art. 16/18/20/21/22 compact track
-│   ├── restrictions-overlays.md      # Art. 23 + German BDSG §§ 34/35, retention anchors
+│   ├── restrictions-overlays.md      # Art. 23 + German BDSG §§ 32/33/34/35/36/37, retention anchors
+│   ├── pending-legislation.md        # Digital Omnibus (procedure 2025/0360(COD)) status watch
 │   ├── templates.md                  # Letters (EN/DE), DSR register, deadline math
 │   └── dsr-sidecar-schema.json       # Native machine-readable sidecar schema
 ├── validator/                        # Structural-tier validator (portfolio standard)
@@ -1228,7 +1231,7 @@ body {
     </section>
 
     <footer class="page-footer">
-        <span class="footer-text">onezero.legal · /SKILLS/DSR · v1.2</span>
+        <span class="footer-text">onezero.legal · /SKILLS/DSR · v1.3</span>
         <nav class="footer-links">
             <a href="https://onezero.legal">Portfolio</a>
             <a href="#features">Capabilities</a>

@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "data-subject-rights skill v<X.Y>",
+  "generated_at": "2026-09-24T09:00:00Z",
+  "request": {
+    "id": "dsr-2026-0225",
+    "intake_date": "2026-09-01",
+    "channel": "privacy@example.com",
+    "requester_relationship": "customer",
+    "text": "Please correct the spelling of my name in your records."
+  },
+  "rights_invoked": ["art16"],
+  "identity_verification": {
+    "verified": false,
+    "reasonable_doubts": false,
+    "notes": "Identity not yet formally confirmed, but this is a low-risk rectification request (no disclosure or destruction risk) — CONSEQ-1 is scoped to art15/art17 only."
+  },
+  "decision": "grant",
+  "deadline": {"computed_date": "2026-10-01", "extended": false},
+  "downstream_duties": []
+}

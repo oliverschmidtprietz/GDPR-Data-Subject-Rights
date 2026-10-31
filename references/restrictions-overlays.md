@@ -18,6 +18,23 @@ Strict reading required: these are narrow and the controller carries the burden;
 - **§ 35(2)**: restriction instead of erasure also where erasure would impair the data subject's OWN legitimate interests (protective, Art. 17(1)(a)/(d) cases).
 - **§ 35(3)**: concerns **satzungsgemäße (articles/by-laws-based) or contractual**, not statutory, retention periods and provides restriction instead of erasure for those periods. Statutory retention defeats erasure directly via Art. 17(3)(b) GDPR.
 
+### §§ 32/33 BDSG — information-duty restrictions (Art. 13/14, not Art. 15)
+
+Narrower cousins of § 34: **§ 32 BDSG** restricts the Art. 13(3) duty to inform the data subject when personal data are collected directly from them and processed further for an incompatible purpose (e.g. the processing is an analogue/paper record and giving notice would require disproportionate effort); **§ 33 BDSG** restricts the Art. 14 duty to inform when data were **not** collected from the data subject at all. Both require the controller to take protective measures (public notice, documented reasons) where information is withheld — mirroring § 34(2)'s documentation duty. These restrict the *proactive* transparency duties, not an Art. 15 access request already received; do not cite them as a ground to refuse an access request.
+
+### § 36 BDSG — objection restriction against public bodies
+
+Restricts the **general Art. 21(1) objection** (not direct-marketing Art. 21(2)) against a **public authority**: the objection does not apply where a compelling public interest in the processing outweighs the data subject's interests, or where a legal provision obliges the processing. Private-sector controllers are unaffected — the ordinary Art. 21(1) re-balancing (`other-rights.md`, run the `legitimate-interest` skill) applies to them in full.
+
+### § 37 BDSG — automated decisions in insurance (Art. 22 derogation)
+
+Verified against the current statute text 2026-10-02 (gesetze-im-internet.de). § 37 narrows Art. 22(1) for **insurance-contract performance** decisions, beyond the Art. 22(2)(a)/(c) exceptions already in the Regulation:
+
+- **§ 37(1):** Art. 22(1) does not bar an automated individual decision taken in connection with performing an insurance contract where **(1)** the decision grants the data subject's request, or **(2)** the decision rests on **binding fee regulations for medical treatment** — but only if the controller takes appropriate measures to safeguard the data subject's legitimate interests, including the rights to obtain human intervention, express their point of view, and contest the decision, and tells the data subject of those rights no later than when notifying them that their request was not fully granted.
+- **§ 37(2):** such decisions may process health data (Art. 4(15) GDPR); the controller must implement the specific protective measures required by § 22(2) sentence 2 BDSG.
+
+Cross-referenced from `other-rights.md`'s Art. 22 section — apply this narrow insurance carve-out only where the decision genuinely concerns performing an insurance contract (claims assessment, tariff-bound medical fee decisions), not general underwriting or marketing scoring.
+
 ### Employment context (§ 26 BDSG + labour case law)
 
 - Employee DSRs are normal DSRs — no HR exception. Sensitive spots: investigation files (Art. 15(4) redaction of witnesses/whistleblowers), performance data, works-council documents (co-determination context).

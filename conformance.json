@@ -8,5 +8,5 @@
   "sources_lock": "sources.lock.json",
   "emits_core_artefact": true,
   "emit_check_input": "validator/fixtures/must_pass/minimal-clean.json",
-  "declared_at": "2026-09-24"
+  "declared_at": "2026-10-02"
 }

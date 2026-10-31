@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/oliverschmidtprietz/claude-skills/skills/data-subject-rights/references/dsr-sidecar-schema.json",
-  "title": "data-subject-rights native sidecar 1.0",
-  "description": "The machine-readable triage record behind a DSR triage verdict: which right(s) were invoked, the computed deadline, the identity-verification stance, the decision, and any downstream duties. Mirrors the skill's own human deliverable (SKILL.md 'Output Formats') — no field here is invented beyond what the skill already produces.",
+  "title": "data-subject-rights native sidecar 1.0/1.1",
+  "description": "The machine-readable triage record behind a DSR triage verdict: which right(s) were invoked, the computed deadline, the identity-verification stance, the decision, and any downstream duties. Mirrors the skill's own human deliverable (SKILL.md 'Output Formats') — no field here is invented beyond what the skill already produces. schema_version 1.1 (break-it test 2026-10-02) adds four optional, backwards-compatible fields: deadline.holiday_rollover, deadline.extension_declared_at, fee, erasure_decision — a 1.0 sidecar that omits all four remains valid.",
   "type": "object",
   "required": [
     "schema_version", "generated_by", "generated_at", "request",
@@ -11,7 +11,7 @@
   ],
   "additionalProperties": true,
   "properties": {
-    "schema_version": {"const": "1.0"},
+    "schema_version": {"enum": ["1.0", "1.1"]},
     "generated_by": {"type": "string"},
     "generated_at": {"type": "string", "format": "date-time"},
     "request": {
@@ -54,6 +54,50 @@
         "extended": {
           "type": "boolean",
           "description": "True if the Art. 12(3) +2-month extension was declared within the first month."
+        },
+        "extension_declared_at": {
+          "type": "string",
+          "format": "date",
+          "description": "Added in schema 1.1. When the extension was actually communicated to the data subject. Checked by DEADLINE-2: must be on or before one month from request.intake_date (Art. 12(3)) — a late declaration is a violation, not a valid extension."
+        },
+        "holiday_rollover": {
+          "type": "array",
+          "description": "Added in schema 1.1. Optional declaration of Member State public holiday(s) that fall on the statutory last day, causing it to roll to the next working day (Reg. (EEC, Euratom) No 1182/71 Art. 3(4)) in addition to the deterministic Saturday/Sunday rule DEADLINE-1 always applies. A holiday is never inferred — only a date declared here is treated as one.",
+          "items": {
+            "type": "object",
+            "required": ["date", "reason"],
+            "properties": {
+              "date": {"type": "string", "format": "date"},
+              "reason": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "fee": {
+      "type": "object",
+      "description": "Added in schema 1.1. Populated only when a fee was charged (or considered) for this request. Checked by FEE-1: the first Art. 15 copy is free by default (Art. 15(3)) — a fee requires a stated Art. 12(5) ground.",
+      "properties": {
+        "charged": {"type": "boolean"},
+        "amount": {"type": "number"},
+        "currency": {"type": "string"},
+        "ground": {
+          "enum": ["further_copy", "manifestly_unfounded_or_excessive"],
+          "description": "The Art. 12(5) ground relied on to charge — required by FEE-1 whenever charged=true."
+        }
+      }
+    },
+    "erasure_decision": {
+      "type": "object",
+      "description": "Added in schema 1.1. Only meaningful when rights_invoked includes art17 — records the Art. 17(1) ground examined and, if relied on, the Art. 17(3) exception (references/art17-erasure.md's two-step test). Checked by ERASURE-1.",
+      "properties": {
+        "ground_examined": {
+          "enum": ["a", "b", "c", "d", "e", "f", "none_found"],
+          "description": "The Art. 17(1)(a)-(f) ground examined, or 'none_found' if none applied."
+        },
+        "exception_relied_on": {
+          "enum": ["a", "b", "c", "d", "e", "none"],
+          "description": "The Art. 17(3)(a)-(e) exception relied on (e.g. 'b' = legal obligation/statutory retention), or 'none'."
         }
       }
     },

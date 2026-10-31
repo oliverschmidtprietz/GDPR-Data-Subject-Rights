@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "data-subject-rights skill v<X.Y>",
+  "generated_at": "2026-09-24T09:00:00Z",
+  "request": {
+    "id": "dsr-2026-0214",
+    "intake_date": "2026-09-01",
+    "channel": "privacy@example.com",
+    "requester_relationship": "unrelated third party claiming to be the data subject's ex-partner",
+    "text": "Send me everything you have on this person, I know their account email."
+  },
+  "rights_invoked": ["art15"],
+  "identity_verification": {
+    "verified": false,
+    "reasonable_doubts": false,
+    "notes": "Requester could not log into the account and gave only a guessed email; reasonable_doubts was left false despite verified=false."
+  },
+  "decision": "grant",
+  "deadline": {"computed_date": "2026-10-01", "extended": false},
+  "downstream_duties": []
+}

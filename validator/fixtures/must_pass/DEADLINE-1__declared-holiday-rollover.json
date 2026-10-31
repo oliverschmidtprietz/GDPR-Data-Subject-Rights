@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.1",
+  "generated_by": "data-subject-rights skill v<X.Y>",
+  "generated_at": "2026-11-25T09:00:00Z",
+  "request": {
+    "id": "dsr-2026-0221",
+    "intake_date": "2026-11-25",
+    "channel": "privacy@example.com",
+    "requester_relationship": "customer",
+    "text": "Please send me a copy of the personal data you hold about me."
+  },
+  "rights_invoked": ["art15"],
+  "identity_verification": {"verified": true, "reasonable_doubts": false},
+  "decision": "grant",
+  "deadline": {
+    "computed_date": "2026-12-28",
+    "extended": false,
+    "holiday_rollover": [
+      {"date": "2026-12-25", "reason": "Christmas Day — statutory public holiday in this Member State (the statutory last day, a Friday, falls on it; the following Sat/Sun roll further per the deterministic weekend rule)"}
+    ]
+  },
+  "downstream_duties": []
+}

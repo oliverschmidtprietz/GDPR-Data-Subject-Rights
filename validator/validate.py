@@ -53,7 +53,32 @@ def main(argv=None):
     )
     args = p.parse_args(argv)
 
-    sidecar = json.loads(args.sidecar.read_text(encoding="utf-8"))
+    try:
+        raw_text = args.sidecar.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        print(f"error: sidecar file not found: {args.sidecar}")
+        return 1
+    except IsADirectoryError:
+        print(f"error: sidecar path is a directory, not a file: {args.sidecar}")
+        return 1
+    except UnicodeDecodeError as exc:
+        print(f"error: sidecar file is not valid UTF-8: {exc}")
+        return 1
+    except OSError as exc:
+        print(f"error: could not read sidecar file {args.sidecar}: {exc}")
+        return 1
+
+    try:
+        sidecar = json.loads(raw_text)
+    except json.JSONDecodeError as exc:
+        print(f"error: sidecar file is not valid JSON: {exc}")
+        return 1
+
+    if not isinstance(sidecar, dict):
+        print(f"error: sidecar top-level JSON must be an object, got "
+              f"{type(sidecar).__name__}")
+        return 1
+
     ctx = Context(mode=args.mode, schema_path=args.schema_path, references_dir=args.references_dir)
     result = validate(sidecar, ctx)
     result.artefact_path = str(args.sidecar)

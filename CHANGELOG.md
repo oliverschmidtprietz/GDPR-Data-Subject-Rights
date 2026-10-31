@@ -6,6 +6,30 @@ Format: `## [vX.Y] — YYYY-MM-DD`
 
 ---
 
+## [v1.3] — 2026-10-02
+
+Break-it test fix wave (adversarial probe pass, `scratchpad/breakit/data-subject-rights/P01-P14`). Validator rule fixes/additions, a jurisdiction-scope clarification, and a German-law expansion. No change to the core DSR method or response templates.
+
+- **DEADLINE-1 false positive fixed.** The rule rejected a correctly computed deadline that had rolled forward past a weekend/holiday per the regulation it already cites (`procedural-framework.md`; Reg. (EEC, Euratom) No 1182/71 Art. 3(4), re-confirmed verbatim 2026-10-02: "Where the last day of a period... is a public holiday, Sunday or Saturday, the period shall end with the expiry of the last hour of the following working day"). Saturdays/Sundays are now rolled forward deterministically; a public holiday only rolls the deadline when declared via the new optional `deadline.holiday_rollover` field (date + reason) — never inferred. Month-end clamping and leap-year arithmetic are unaffected (regression-tested).
+- **New `DEADLINE-2`** — an Art. 12(3) extension must be declared within the first month (new optional `deadline.extension_declared_at` field); a late declaration is now a rejection instead of silently passing.
+- **New `FEE-1`** — a charged fee (new optional `fee` field: `charged`, `amount`, `currency`, `ground`) now requires a stated Art. 12(5) ground (`further_copy` or `manifestly_unfounded_or_excessive`); charging for a first copy with no ground stated is a rejection (Art. 15(3)).
+- **New `ERASURE-1`** — an Art. 17 `refuse` must record a ground examined and/or an exception relied on (new optional `erasure_decision` field: `ground_examined`, `exception_relied_on`); a full `grant` while an Art. 17(3) exception (e.g. `(b)` statutory retention) is recorded on the same sidecar is now a rejection — partial disposition is the correct decision in that case.
+- **`CONSEQ-1` widened** — now also fires on `decision=grant/partial` for Art. 15/Art. 17 requests when `identity_verification.verified` is explicitly `false`, even if `reasonable_doubts` was (wrongly) left `false`. Deliberately scoped to the two disclosure/destruction-risk rights to avoid false positives on lower-risk rights (e.g. Art. 16 rectification).
+- **`RIGHTS-1` made bidirectional and widened** — previously only flagged an Art. 17-only triage missing a plain Art. 15 component; now also flags the reverse (an Art. 15-only triage whose text plainly asks for erasure, e.g. "delete everything you have on me"). Both phrase lists modestly widened (e.g. "what personal data you store about me", "delete my account").
+- **`dsr-sidecar-schema.json` → schema 1.1** (backwards compatible — `schema_version` now accepts `"1.0"` or `"1.1"`; all four new fields are optional, a 1.0 sidecar omitting them stays valid).
+- **Validator CLI fails closed** (`validate.py`) on a missing file, unreadable file, invalid UTF-8, invalid JSON, or non-object top-level JSON — a clean one-line message and exit 1, no raw traceback. Previously crashed with a Python traceback on all of these.
+- **SKILL.md — new "Scope — jurisdiction" section**: this skill covers EU GDPR (+ German BDSG); a UK "SAR"/"DSAR" is explicitly out of scope — post-2021 CJEU rulings aren't binding in the UK, and the Data (Use and Access) Act 2025 changed UK subject-access handling (main provisions in force 5 Feb 2026 per SI 2026/82) — verify specifics on legislation.gov.uk rather than relying on this skill.
+- **SKILL.md — new "Identity — competing claims and abuse" section**: joint-account/ex-partner/family-member requests are a disclosure risk, not a routine identity check; verify against the account holder, not the requester.
+- **`restrictions-overlays.md`** — added BDSG §§ 32, 33, 36, and 37 (each fetched live from gesetze-im-internet.de 2026-10-02): §§ 32/33 restrict the Art. 13(3)/14 proactive notice duties (not an Art. 15 access request itself); § 36 restricts the general Art. 21(1) objection against public authorities only; § 37 narrows Art. 22(1) for insurance-contract-performance decisions. § 37 cross-referenced from `other-rights.md`'s Art. 22 section.
+- **Digital Omnibus content moved** from SKILL.md into new `references/pending-legislation.md` (now covered by `sources.lock.json`/SRC-1 freshness instead of living outside it) and its status re-verified live 2026-10-02 (still EP committee stage; Council's 26 Jun 2026 general-approach vote was cancelled; no trilogue).
+- **SKILL.md "Machine-readable output"** — added an explicit sentence: a validator pass means the sidecar is internally consistent and complete against its own schema and rules, NOT that the underlying legal analysis is correct.
+- `sources.lock.json` — `last_verified` updated to 2026-10-02 for `procedural-framework.md`, `art17-erasure.md`, `other-rights.md`, and `restrictions-overlays.md` (content changes above); new entry for `pending-legislation.md`.
+- Test suite: 49 → 94 pytest cases (new `test_fee.py`, `test_erasure.py`, `validator/test_validate_cli.py`; new assertions in `test_deadline.py`, `test_consequential.py`, `test_rights_detection.py`); 6 new `must_fail` fixtures and 7 new `must_pass` fixtures (including non-regression controls for leap-year month-end and exact-boundary extension arithmetic).
+
+**Status:** reviewed (carried from v1.2) — this release did not re-run the full Phase 8 eval benchmark; see `sources/verification-log.md` "Break-it fix wave (2026-10-02)" for the legal-content verification record.
+
+---
+
 ## [v1.2] — 2026-09-24
 
 Portfolio standard Level 1 (structural-tier) adoption. No change to DSR method,

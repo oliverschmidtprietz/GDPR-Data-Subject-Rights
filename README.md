@@ -28,7 +28,8 @@ data-subject-rights/
 │   ├── art15-access.md               # Access deep track (EDPB 01/2022 + CJEU)
 │   ├── art17-erasure.md              # Erasure deep track (grounds, exceptions, downstream)
 │   ├── other-rights.md               # Art. 16/18/20/21/22 compact track
-│   ├── restrictions-overlays.md      # Art. 23 + German BDSG §§ 34/35, retention anchors
+│   ├── restrictions-overlays.md      # Art. 23 + German BDSG §§ 32/33/34/35/36/37, retention anchors
+│   ├── pending-legislation.md        # Digital Omnibus (procedure 2025/0360(COD)) status watch
 │   ├── templates.md                  # Letters (EN/DE), DSR register, deadline math
 │   └── dsr-sidecar-schema.json       # Native machine-readable sidecar schema
 ├── validator/                        # Structural-tier validator (portfolio standard)

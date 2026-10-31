@@ -70,7 +70,8 @@ def test_must_fail_fixture_trips_exactly_conseq1():
     assert result.status == "failed"
     rejecting_rule_ids = {f.rule_id for f in result.findings if f.severity == "rejection"}
     assert rejecting_rule_ids == {"CONSEQ-1"}, rejecting_rule_ids
-    assert set(RULES) >= {"SCHEMA-1", "CONSEQ-1", "DEADLINE-1", "RIGHTS-1", "SRC-1"}
+    assert set(RULES) >= {"SCHEMA-1", "CONSEQ-1", "DEADLINE-1", "DEADLINE-2", "RIGHTS-1",
+                          "FEE-1", "ERASURE-1", "SRC-1"}
 
 
 # --- Portfolio findings-report 2.0 -------------------------------------------

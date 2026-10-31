@@ -8,6 +8,70 @@ Legal verification pass required before v1.0 (HANDOFF item 0, 2026-07-07). Every
 
 **Re-run rule:** before any future version bump that touches legal content, re-check the items marked ⏳ watch and the Digital Omnibus status.
 
+## Break-it fix wave (2026-10-02)
+
+Adversarial probe testing (`scratchpad/breakit/data-subject-rights/P01-P14`, external to this
+repo) found a DEADLINE-1 false positive and several structural-validator gaps, plus three
+legal-content items flagged for fresh verification. All four were live-checked against primary
+sources 2026-10-02:
+
+1. **Reg. (EEC, Euratom) No 1182/71 Art. 3(4) — weekend/holiday deadline rollover — CONFIRMED.**
+   Fetched via legislation.gov.uk's retained-EU-law mirror of the Regulation (the EUR-Lex HTML
+   endpoints did not return fetchable content on this pass; legislation.gov.uk carries the
+   identical pre-Brexit EU text verbatim, confirmed against the WebSearch-indexed EUR-Lex
+   snippet of the same provision). Exact text: "Where the last day of a period expressed
+   otherwise than in hours is a public holiday, Sunday or Saturday, the period shall end with
+   the expiry of the last hour of the following working day." This is what DEADLINE-1 now
+   implements (Saturdays/Sundays deterministic; a public holiday only rolls the deadline when
+   the sidecar's new `deadline.holiday_rollover` field declares it).
+   Source: https://www.legislation.gov.uk/eur/1971/1182/article/3 (accessed 2026-10-02).
+
+2. **UK Data (Use and Access) Act 2025 — SAR changes — CONFIRMED (generic caveat, specifics
+   flagged verify-before-citing).** Royal Assent 19 June 2025; the principal data-protection
+   provisions (including a statutory "stop the clock" mechanism pausing the Art. 15 response
+   period while the controller seeks clarification on scope, and a codified "reasonable and
+   proportionate search" standard) came into force via commencement regulations (SI 2026/82) on
+   5 February 2026. This skill does **not** track UK law in depth — SKILL.md's new jurisdiction
+   note states the DUAA exists and the commencement date, and defers specifics to
+   legislation.gov.uk / UK-qualified counsel, consistent with the "outside this playbook" scope.
+   Sources: https://www.legislation.gov.uk (SI 2026/82) and corroborating practitioner summaries
+   (Ashfords, Ashurst-class firms) cross-checked for the stop-the-clock and commencement facts;
+   accessed 2026-10-02.
+
+3. **BDSG §§ 32, 33, 36, 37 — CONFIRMED, each fetched live from gesetze-im-internet.de.**
+   - § 32 (restricts the Art. 13(3) further-processing notice duty for directly-collected data,
+     5 narrow grounds, 2-week cure window) — gesetze-im-internet.de/bdsg_2018/__32.html.
+   - § 33 (restricts the Art. 14 notice duty for data not collected from the data subject,
+     public-authority and private-sector grounds, documentation duty) —
+     gesetze-im-internet.de/bdsg_2018/__33.html.
+   - § 36 (restricts the general Art. 21(1) objection against public authorities only, compelling
+     public interest or statutory obligation) — gesetze-im-internet.de/bdsg_2018/__36.html.
+   - § 37 (insurance-contract-performance decisions: Art. 22(1) does not bar the decision where
+     it grants the request or rests on binding medical-treatment fee regulations with 22(3)-style
+     safeguards; health data processing permitted with § 22(2) sentence 2 safeguards) —
+     gesetze-im-internet.de/bdsg_2018/__37.html.
+   All four accessed 2026-10-02; added to `references/restrictions-overlays.md` with a
+   cross-reference from `references/other-rights.md`'s Art. 22 section to § 37.
+
+4. **Digital Omnibus (procedure 2025/0360(COD)) — status re-checked, CONFIRMED still unresolved,
+   details updated.** Moved from SKILL.md into `references/pending-legislation.md` so SRC-1
+   freshness covers it going forward. As of 2026-10-02: European Parliament still in committee
+   (ITRE+LIBE joint, co-rapporteurs' draft report 22 June 2026, joint committee discussion 13
+   July 2026, 1,750+ amendments tabled by the 15 July 2026 deadline, no vote yet); Council's
+   26 June 2026 general-approach vote was cancelled over unresolved disagreements, work
+   continuing under the Irish Presidency; EESC opinion adopted 18 March 2026; Committee of the
+   Regions opinion adopted 7 May 2026; no trilogue has started. This supersedes the 2026-07-07
+   note's "EP committee stage, no Council general approach" summary with the same conclusion but
+   fresher, more specific facts.
+   Source: europarl.europa.eu legislative-train tracker and Council interinstitutional-file
+   documents (data.consilium.europa.eu), accessed 2026-10-02.
+
+**Not independently re-verified this pass** (unchanged from 2026-07-07/07-21, already covered by
+existing sources.lock.json entries): the 14 CJEU citations in `art15-access.md`/`art17-erasure.md`/
+`other-rights.md`, EDPB Guidelines 01/2022 v2.1, BDSG §§ 26/34/35, and the AO/HGB retention table.
+
+---
+
 ## Correction — propagation reconciliation (2026-07-12)
 
 The 2026-07-07 verification identified the correct channel, statutory-retention, and C-203/22 rules, but those conclusions were not fully propagated to the orchestrator, references, templates, deployment guide, and evaluation contract. This correction reconciled `SKILL.md`, `references/procedural-framework.md`, `references/art15-access.md`, `references/art17-erasure.md`, `references/other-rights.md`, `references/restrictions-overlays.md`, `references/templates.md`, `README.md`, and `evals/evals.json`. The original verification entries below are preserved as the historical record; this note supersedes their earlier “fixed” status where the deployed wording remained stale.

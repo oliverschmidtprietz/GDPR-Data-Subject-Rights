@@ -54,3 +54,45 @@ def test_malformed_identity_verification_does_not_raise():
     sidecar = json.loads((FIX / "must_pass" / "minimal-clean.json").read_text())
     sidecar["identity_verification"] = "not-a-dict"
     assert grant_requires_verified_identity_when_doubted(sidecar, _ctx()) == []
+
+
+# --- break-it test 2026-10-02: widened trigger (verified=false, reasonable_doubts=false) ----
+
+def test_fires_on_grant_with_verified_false_for_art15_even_without_doubts_flag():
+    sidecar = json.loads(
+        (FIX / "must_fail" / "CONSEQ-1__grant-unverified-explicit-false-no-doubts-flag.json")
+        .read_text())
+    assert sidecar["identity_verification"]["reasonable_doubts"] is False
+    findings = grant_requires_verified_identity_when_doubted(sidecar, _ctx())
+    assert len(findings) == 1
+    assert findings[0].rule_id == "CONSEQ-1"
+    assert findings[0].severity == "rejection"
+
+
+def test_fires_on_grant_with_verified_false_for_art17_too():
+    sidecar = json.loads(
+        (FIX / "must_fail" / "CONSEQ-1__grant-unverified-explicit-false-no-doubts-flag.json")
+        .read_text())
+    sidecar["rights_invoked"] = ["art17"]
+    findings = grant_requires_verified_identity_when_doubted(sidecar, _ctx())
+    assert len(findings) == 1
+
+
+def test_silent_for_low_risk_right_even_when_verified_is_false():
+    sidecar = json.loads(
+        (FIX / "must_pass" / "CONSEQ-1__unverified-low-risk-right.json").read_text())
+    assert grant_requires_verified_identity_when_doubted(sidecar, _ctx()) == []
+
+
+def test_silent_when_verified_is_merely_absent_not_explicitly_false():
+    sidecar = json.loads((FIX / "must_pass" / "minimal-clean.json").read_text())
+    del sidecar["identity_verification"]["verified"]
+    assert grant_requires_verified_identity_when_doubted(sidecar, _ctx()) == []
+
+
+def test_widened_trigger_silent_on_refuse():
+    sidecar = json.loads(
+        (FIX / "must_fail" / "CONSEQ-1__grant-unverified-explicit-false-no-doubts-flag.json")
+        .read_text())
+    sidecar["decision"] = "refuse"
+    assert grant_requires_verified_identity_when_doubted(sidecar, _ctx()) == []
