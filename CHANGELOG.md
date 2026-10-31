@@ -6,6 +6,21 @@ Format: `## [vX.Y] — YYYY-MM-DD`
 
 ---
 
+## [v1.4] — 2026-10-31
+
+Bundled tests made portable to the standalone public copy (`scripts/stage-public-copy.sh`
++ `scripts/check-public-portability.sh`). No change to the core DSR method or response
+templates.
+
+- **`validator/dsr_validator/_schema_paths.py` (new) exposes `find_schema()`**, which
+  locates a shared portfolio schema (`docs/standards/schemas/*.schema.json`) by walking
+  up from the file's own location — works identically whether the schemas sit at the
+  monorepo root or at the root of a flat public copy (the staging script now copies
+  them there). `validator/dsr_validator/test_core_artefact.py` and
+  `validator/dsr_validator/test_runner.py` use it instead of a hard-coded path computed
+  from `Path(__file__).resolve().parents[4]`, which only resolved correctly inside the
+  monorepo.
+
 ## [v1.3] — 2026-10-02
 
 Break-it test fix wave (adversarial probe pass, `scratchpad/breakit/data-subject-rights/P01-P14`). Validator rule fixes/additions, a jurisdiction-scope clarification, and a German-law expansion. No change to the core DSR method or response templates.
